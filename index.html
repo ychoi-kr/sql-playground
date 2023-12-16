@@ -25,8 +25,9 @@
         .header {
             display: flex;
             justify-content: flex-end;
-            padding: 10px;
-            /*background-color: #f5f5f5;*/
+            padding: 5px;
+            background-color: #f5f5f5;
+            /*margin-bottom: 10px;*/
         }
         .header a {
             text-decoration: none;
@@ -47,7 +48,12 @@
             height: 100%; /* 전체 높이를 확보 */
         }
         .content {
-            padding-bottom: 120px; /* 광고 높이만큼의 여백을 추가 */
+            padding: 5px; 
+            padding-bottom: 120px; /* 하단 광고와 겹치지 않도록 추가 여백 설정 */
+            box-sizing: border-box; 
+        }
+        h1 {
+            margin-top: -5px;
         }
     </style>
 </head>
@@ -55,7 +61,7 @@
     <div class="header">
         <a href="https://wikidocs.net/book/1530" target="_blank">SQLite3로 가볍게 배우는 데이터베이스</a>
     </div>
-    <div>
+    <div class="content">
         <h1>SQL 놀이터</h1>
         <textarea id="sqlInput">-- 여기에 SQL 쿼리를 입력하세요
 SELECT '안녕, SQL.js!' AS greeting;</textarea>
