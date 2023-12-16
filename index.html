@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SQL Playground</title>
+    <!-- SQL.js의 wasm 파일 위치를 지정해야 합니다 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.js"></script>
+    <style>
+        textarea, pre {
+            width: 90%;
+            height: 150px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SQL Playground</h1>
+    <textarea id="sqlInput">-- 여기에 SQL 쿼리를 입력하세요\nSELECT 'Hello, SQL.js!';</textarea>
+    <button id="runButton" disabled>실행</button>
+    <pre id="output">결과가 여기에 표시됩니다.</pre>
+
+    <script>
+        var db;
+        var config = {
+            locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${filename}`
+        };
+
+        // SQL.js를 비동기적으로 초기화합니다.
+        initSqlJs(config).then(function (SQL) {
+            db = new SQL.Database();
+            document.getElementById('runButton').disabled = false;
+        }).catch(e => console.error(e));
+
+        function runSQL() {
+            var input = document.getElementById('sqlInput').value;
+            try {
+                var results = db.exec(input);
+                document.getElementById('output').textContent = JSON.stringify(results, null, 2);
+            } catch (e) {
+                document.getElementById('output').textContent = '오류: ' + e.message;
+            }
+        }
+
+        document.getElementById('runButton').onclick = runSQL;
+    </script>
+</body>
+</html>
