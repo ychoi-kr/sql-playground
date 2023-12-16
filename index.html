@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SQL ³îÀÌÅÍ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SQL ë†€ì´í„°ì—ì„œ SQLì„ ì‰½ê³  ë¹ ë¥´ê²Œ ë°°ìš¸ ìˆ˜ ìˆìŠµë‹ˆë‹¤.">
+    <meta name="keywords" content="SQL, ë°ì´í„°ë² ì´ìŠ¤, í”„ë¡œê·¸ë˜ë°, í•™ìŠµ, SQL ë†€ì´í„°, SQL Playground">
+    <title>SQL ë†€ì´í„°</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.js"></script>
     <style>
         textarea, table, pre {
@@ -32,14 +36,14 @@
 </head>
 <body>
     <div class="header">
-        <a href="https://wikidocs.net/book/1530" target="_blank">SQLite3·Î °¡º±°Ô ¹è¿ì´Â µ¥ÀÌÅÍº£ÀÌ½º</a>
+        <a href="https://wikidocs.net/book/1530" target="_blank">SQLite3ë¡œ ê°€ë³ê²Œ ë°°ìš°ëŠ” ë°ì´í„°ë² ì´ìŠ¤</a>
     </div>
     <div>
-        <h1>SQL ³îÀÌÅÍ</h1>
-        <textarea id="sqlInput">-- ¿©±â¿¡ SQL Äõ¸®¸¦ ÀÔ·ÂÇÏ¼¼¿ä
-SELECT '¾È³ç, SQL.js!' AS greeting;</textarea>
-        <button id="runButton" disabled>½ÇÇà</button>
-        <div id="output">°á°ú°¡ ¾Æ·¡¿¡ Ç¥½ÃµË´Ï´Ù.(¿©·¯ Äõ¸®¸¦ ½ÇÇàÇÒ °æ¿ì ¸¶Áö¸· Äõ¸®ÀÇ °á°ú¸¸ Ç¥½ÃµË´Ï´Ù.)</div>
+        <h1>SQL ë†€ì´í„°</h1>
+        <textarea id="sqlInput">-- ì—¬ê¸°ì— SQL ì¿¼ë¦¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”
+SELECT 'ì•ˆë…•, SQL.js!' AS greeting;</textarea>
+        <button id="runButton" disabled>ì‹¤í–‰</button>
+        <div id="output">ê²°ê³¼ê°€ ì•„ë˜ì— í‘œì‹œë©ë‹ˆë‹¤.(ì—¬ëŸ¬ ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•  ê²½ìš° ë§ˆì§€ë§‰ ì¿¼ë¦¬ì˜ ê²°ê³¼ë§Œ í‘œì‹œë©ë‹ˆë‹¤.)</div>
     </div>
     <script>
         var db;
@@ -47,7 +51,7 @@ SELECT '¾È³ç, SQL.js!' AS greeting;</textarea>
             locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${filename}`
         };
 
-        // SQL.js¸¦ ºñµ¿±âÀûÀ¸·Î ÃÊ±âÈ­ÇÕ´Ï´Ù.
+        // SQL.jsë¥¼ ë¹„ë™ê¸°ì ìœ¼ë¡œ ì´ˆê¸°í™”í•©ë‹ˆë‹¤.
         initSqlJs(config).then(function (SQL) {
             db = new SQL.Database();
             document.getElementById('runButton').disabled = false;
@@ -58,24 +62,24 @@ SELECT '¾È³ç, SQL.js!' AS greeting;</textarea>
             try {
                 var results = db.exec(input);
 
-                // Äõ¸® °á°ú¿¡ µû¸¥ ¸Ş½ÃÁö Ã³¸®
+                // ì¿¼ë¦¬ ê²°ê³¼ì— ë”°ë¥¸ ë©”ì‹œì§€ ì²˜ë¦¬
                 if (input.trim().toUpperCase().startsWith("CREATE TABLE")) {
-                    document.getElementById('output').textContent = 'Å×ÀÌºí »ı¼º ¿Ï·á.';
+                    document.getElementById('output').textContent = 'í…Œì´ë¸” ìƒì„± ì™„ë£Œ.';
                 } else if (input.trim().toUpperCase().startsWith("CREATE VIEW")) {
-                    document.getElementById('output').textContent = 'ºä »ı¼º ¿Ï·á.';
+                    document.getElementById('output').textContent = 'ë·° ìƒì„± ì™„ë£Œ.';
                 } else if (input.trim().toUpperCase().startsWith("DROP")) {
-                    document.getElementById('output').textContent = 'Å×ÀÌºí »èÁ¦ ¿Ï·á.';
+                    document.getElementById('output').textContent = 'í…Œì´ë¸” ì‚­ì œ ì™„ë£Œ.';
                 } else if (input.trim().toUpperCase().startsWith("ALTER")) {
-                    document.getElementById('output').textContent = 'Å×ÀÌºí ¼öÁ¤ ¿Ï·á.';
+                    document.getElementById('output').textContent = 'í…Œì´ë¸” ìˆ˜ì • ì™„ë£Œ.';
                 } else if (input.trim().toUpperCase().startsWith("INSERT")) {
-                    document.getElementById('output').textContent = 'µ¥ÀÌÅÍ Ãß°¡ ¿Ï·á.';
+                    document.getElementById('output').textContent = 'ë°ì´í„° ì¶”ê°€ ì™„ë£Œ.';
                 } else if (results.length) {
                     document.getElementById('output').innerHTML = toHTMLTable(results[0]);
                 } else {
-                    document.getElementById('output').textContent = 'Äõ¸® ½ÇÇà ¿Ï·á. º¯°æ »çÇ× ¾øÀ½.';
+                    document.getElementById('output').textContent = 'ì¿¼ë¦¬ ì‹¤í–‰ ì™„ë£Œ. ë³€ê²½ ì‚¬í•­ ì—†ìŒ.';
                 }
             } catch (e) {
-                document.getElementById('output').textContent = '¿À·ù: ' + e.message;
+                document.getElementById('output').textContent = 'ì˜¤ë¥˜: ' + e.message;
             }
         }
 
