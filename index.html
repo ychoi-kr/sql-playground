@@ -44,8 +44,10 @@
                 var results = db.exec(input);
 
                 // 쿼리 결과에 따른 메시지 처리
-                if (input.trim().toUpperCase().startsWith("CREATE")) {
+                if (input.trim().toUpperCase().startsWith("CREATE TABLE")) {
                     document.getElementById('output').textContent = '테이블 생성 완료.';
+                } else if (input.trim().toUpperCase().startsWith("CREATE VIEW")) {
+                    document.getElementById('output').textContent = '뷰 생성 완료.';
                 } else if (input.trim().toUpperCase().startsWith("DROP")) {
                     document.getElementById('output').textContent = '테이블 삭제 완료.';
                 } else if (input.trim().toUpperCase().startsWith("ALTER")) {
