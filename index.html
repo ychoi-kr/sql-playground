@@ -33,15 +33,6 @@
             text-decoration: none;
             color: #007bff;
         }
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #f5f5f5; /* 배경색, 필요에 따라 조정 */
-            text-align: center; /* 광고 내용이 중앙에 위치하도록 */
-            z-index: 1000; /* 다른 내용 위에 표시되도록 */
-        }
         body, html {
             margin: 0;
             padding: 0;
@@ -67,13 +58,6 @@
 SELECT '안녕, SQL.js!' AS greeting;</textarea>
         <button id="runButton" disabled>실행</button>
         <div id="output">결과가 아래에 표시됩니다.(여러 쿼리를 실행할 경우 마지막 쿼리의 결과만 표시됩니다.)</div>
-    </div>
-    <div class="footer">
-        <ins class="kakao_ad_area" style="display:none;"
-        data-ad-unit = "DAN-assMWzsdcPDzWLFc"
-        data-ad-width = "320"
-        data-ad-height = "100"></ins>
-        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
     </div>
     <script>
         var db;
